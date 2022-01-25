@@ -1,8 +1,9 @@
 from tkinter import*
-#from front_end1.interface_window import*
+from front_end1.window_interface import*
 from tkinter import ttk
 from tkinter import messagebox
 from back_end1.register_connection import*
+# from front_end1.register_interface import Register
 class Login:
     def __init__(self,screen):
         self.wn=screen
@@ -108,6 +109,13 @@ class Login:
                 self.btn_resetpassword = Button(self.root, text="Reset Password", font=("times new roman", 20), fg="white", bg="#d77337",
                                         bd=5,cursor="hand2",command=self.reset_password).place(x=110, y=330, width=180, height=40)
 
+                self.lbl_already = Label(self.frame1, text="Already have an account ?",
+                                         font=("Goudy old style", 20, "bold"),
+                                         bg="#7851A9", fg="pink").place(x=180, y=700)
+                self.btn_login = Button(self.frame1, text="Login Here", font=("Goudy old style", 20, "bold"), fg="navy",
+                                        bg="#7851A9", bd=0, command=self.login_click, cursor="hand2").place(x=470,
+                                                                                                            y=697)
+
 
 
     def login_click(self):
@@ -131,6 +139,12 @@ class Login:
                 messagebox.showinfo("success","congrats login success")
                 self.wn.withdraw()
                 self.main_window()
+
+
+    # def register_click(self):
+    #     new_window = Toplevel()
+    #     Register(new_window)
+    #     self.wnn.withdraw()
 
 
 
