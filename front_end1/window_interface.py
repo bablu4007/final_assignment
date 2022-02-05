@@ -42,7 +42,7 @@ class Mainwindow:
         # ===image2======
         self.canvas_btn3 = Canvas(self.container_first, width=150, height=100)
         self.canvas_btn3.place(x=400, y=340)
-        self.photo3 = PhotoImage(file="C:\\Users\Bablu\pythonProject\\final_assignment_semIII\\images\\money.png")
+        self.photo3 = PhotoImage(file="C:\\Users\Bablu\pythonProject\\final_assignment_semIII\\images\\money.jpg")
         self.canvas_btn3.create_image(0, 0, image=self.photo3, anchor=NW)
         # =======button3=====
         self.btn3 = Button(self.container_first, text="Fees Management", font=("times new roman", 15, "bold"), bd=8,
