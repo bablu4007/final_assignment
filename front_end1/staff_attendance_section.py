@@ -153,3 +153,268 @@ class Staff_attendance:
         self.staffatten_table['show'] = "headings"
         self.staffatten_table.pack(fill=BOTH, expand=1)
         self.staffatten_table.bind("<ButtonRelease-1>", self.showdata_into_entry)
+
+    def calc1(self):
+        self.calc = Calendar(self.wn, selectmode="day", date_pattern="yyyy/mm/dd")
+        self.calc.place(x=520, y=345)
+    def getvalue1(self):
+        self.from_date_var.set(self.calc.get_date())
+
+    def getvalue2(self):
+        self.to_date_var.set(self.calc.get_date())
+
+    def view_window(self):
+        self.screen = Tk()
+        self.screen.geometry("825x723+680+90")
+        self.screen.config(bg="light green")
+        self.screen.grab_set()
+        # =====first frame inside view window=======
+        self.view_frame = Frame(self.screen, bd=5, bg="white", relief=RIDGE)
+        self.view_frame.place(x=10,y=130,width=805,height=580)
+        # ========searching======
+        lbl_search = Label(self.screen, text="Search By:", font=("times new roman", 25, "bold"), fg="maroon",
+                           bg="light green")
+        lbl_search.grid(row=0, column=0, sticky="w", padx=10, pady=10)
+        self.combo_search = ttk.Combobox(self.screen, width=13,
+                                         font=("times new roman", 13, "bold"), state="readonly")
+        self.combo_search["values"] = ("First_Name")
+        self.combo_search.grid(row=0, column=1, padx=10, pady=10)
+        self.search_ent = Entry(self.screen, font=("arial", 12, "bold"), bd=1, relief=GROOVE)
+        self.search_ent.grid(row=0, column=2, padx=10, pady=10)
+        search_btn = Button(self.screen, text="Search", font=("times new roman", 15, "bold"), bd=5, fg="black",
+                            bg="white",
+                            width=8,command=self.search_data1)
+        search_btn.grid(row=0, column=3, padx=10, pady=10)
+        searchall_btn = Button(self.screen, text="Search All", font=("times new roman", 15, "bold"), bd=5,
+                               fg="black",
+                               bg="white",
+                               width=8,command=self.show_table)
+        searchall_btn.grid(row=0, column=4, padx=10, pady=10)
+        # =======sorting==========
+        lbl_sort = Label(self.screen, text="Sort By:", font=("times new roman", 25, "bold"), fg="black",
+                         bg="light green")
+        lbl_sort.place(x=10, y=70)
+        combo_sort = ttk.Combobox(self.screen, width=13,
+                                  font=("times new roman", 13, "bold"), state="readonly")
+        combo_sort["values"] = ("First_Name")
+        combo_sort.place(x=140, y=76, width=200)
+        sort_btn = Button(self.screen, text="Sort", font=("times new roman", 15, "bold"), bd=5, fg="black",
+                          bg="yellow",
+                          width=8,command=self.sorting)
+        sort_btn.place(x=380, y=70)
+        #======scrollbar======
+        scroll_x = Scrollbar(self.view_frame, orient=HORIZONTAL)
+        scroll_y = Scrollbar(self.view_frame, orient=VERTICAL)
+        self.staf_table = ttk.Treeview(self.view_frame, columns=(
+                                                                "First_Name", "Last_Name","Staff_ID_No", "From",
+                                                                "To",
+                                                                "Total Number of days", "Number of days present",
+                                                                "Number of days absent"), xscrollcommand=scroll_x.set,
+                                      yscrollcommand=scroll_y.set)
+
+        scroll_x.pack(side=BOTTOM, fill=X)
+        scroll_y.pack(side=RIGHT, fill=Y)
+        scroll_x.config(command=self.staf_table.xview)
+        scroll_y.config(command=self.staf_table.yview)
+        self.staf_table.heading("First_Name", text="First_Name")
+        self.staf_table.heading("Last_Name", text="Last_Name")
+        self.staf_table.heading("Staff_ID_No", text="Staff_ID_No")
+        self.staf_table.heading("From", text="From")
+        self.staf_table.heading("To", text="To")
+        self.staf_table.heading("Total Number of days", text="Total Number of days")
+        self.staf_table.heading("Number of days present", text="Number of days present")
+        self.staf_table.heading("Number of days absent", text="Number of days absent")
+        self.staf_table['show'] = "headings"
+        self.staf_table.pack(fill=BOTH, expand=1)
+        self.show_table()
+        self.staf_table.bind("<ButtonRelease-1>", self.displaydata_into_entry)
+
+    def search_data(self):
+        try:
+            query = "select First_Name,Last_Name,ID_No from tbl_staff1 where " + str(
+                self.combo_search1.get()) + "=" + str(self.search_ent1.get())
+            row = self.con_staffattendance.select1(query)
+            # print(row)
+            if len(row) != 0:
+                self.staffatten_table.delete(*self.staffatten_table.get_children())
+                for i in row:
+                    self.staffatten_table.insert('', END, values=i)
+
+
+        except Exception as es:
+
+            messagebox.showerror("error",f"error due to {str(es)}")
+
+
+    def showdata_into_entry(self,ev):
+        row_cursor=self.staffatten_table.focus()
+        contents=self.staffatten_table.item(row_cursor)
+        row=contents['values']
+        self.ent_Name.delete(0, END)
+        self.ent_Name.insert(END,row[0])
+        self.ent_lname.delete(0, END)
+        self.ent_lname.insert(END,row[1])
+        self.ent_id.delete(0, END)
+        self.ent_id.insert(END, row[2])
+
+    def add(self):
+        if self.ent_id.get() == "" or self.ent_Name.get() == "" or self.ent_lname.get() == "" or self.from_date_var.get() == "" \
+                or self.to_date_var.get() == "" or self.ent_totalday.get() == "" or \
+                self.ent_present.get() == "" or self.ent_absent.get() == "":
+            messagebox.showerror("Error", "All fields are required")
+
+
+        elif self.ent_id.get().isalpha() or self.ent_totalday.get().isalpha() or self.ent_present.get().isalpha() or \
+                self.ent_absent.get().isalpha():
+            messagebox.showerror("Error",
+                                 "Alphabetical value is not allowed in staff id,total days, present days and absent days")
+        else:
+            try:
+
+                stuattendance_obj = Model_staffattendance( self.ent_Name.get(),
+                                                            self.ent_lname.get(),self.ent_id.get(), self.from_date_var.get(),
+                                                            self.to_date_var.get(), self.ent_totalday.get(),
+                                                            self.ent_present.get(), self.ent_absent.get())
+                query = "insert into tbl_staff_attendance values(%s,%s,%s,%s,%s,%s,%s,%s);"
+                values = (
+                 stuattendance_obj.get_First_Name(), stuattendance_obj.get_Last_Name(),stuattendance_obj.get_ID_No(),
+                stuattendance_obj.get_From(), stuattendance_obj.get_To(), stuattendance_obj.get_Total_days(),
+                stuattendance_obj.get_Days_present(), stuattendance_obj.get_Days_absent())
+                self.con_staffattendance.insert(query, values)
+                messagebox.showinfo("error", "Data inserted in database successfully")
+                self.clear()
+
+
+            except Exception as e:
+                messagebox.showerror("error", f"error due to {str(e)}")
+
+    def show_table(self):
+        query_select = "select * from tbl_staff_attendance;"
+        row1 = self.con_staffattendance.select1(query_select)
+        if len(row1) != 0:
+            self.staf_table.delete(*self.staf_table.get_children())
+            for i in row1:
+                self.staf_table.insert('', END, values=i)
+
+    def clear(self):
+        self.ent_id.delete(0, END)
+        self.ent_Name.delete(0, END)
+        self.ent_lname.delete(0, END)
+        self.from_date_var.set("")
+        self.to_date_var.set("")
+        self.ent_totalday.delete(0, END)
+        self.ent_present.delete(0, END)
+        self.ent_absent.delete(0, END)
+
+    def displaydata_into_entry(self, ev):
+        row_cursor = self.staf_table.focus()
+        contents = self.staf_table.item(row_cursor)
+        row = contents['values']
+        self.ent_Name.delete(0, END)
+        self.ent_Name.insert(END, row[0])
+        self.ent_lname.delete(0, END)
+        self.ent_lname.insert(END, row[1])
+        self.ent_id.delete(0, END)
+        self.ent_id.insert(END, row[2])
+        self.from_date_var.set(row[3])
+        self.to_date_var.set(row[4])
+        self.ent_totalday.delete(0, END)
+        self.ent_totalday.insert(END, row[5])
+        self.ent_present.delete(0, END)
+        self.ent_present.insert(END, row[6])
+        self.ent_absent.delete(0, END)
+        self.ent_absent.insert(END, row[7])
+
+    def delete(self):
+        if self.ent_id.get() == "":
+            messagebox.showerror("error", "please enter id nnumber to delete")
+        else:
+
+            try:
+                query = "delete from tbl_staff_attendance where Staff_ID_No=%s;"
+                stuattendance_obj = Model_staffattendance( self.ent_Name.get(),
+                                                            self.ent_lname.get(),self.ent_id.get(), self.from_date_var.get(),
+                                                            self.to_date_var.get(), self.ent_totalday.get(),
+                                                            self.ent_present.get(), self.ent_absent.get())
+                value = (stuattendance_obj.get_ID_No(),)
+                self.con_staffattendance.delete(query, value)
+                messagebox.showinfo("success", "data deleted successfully",parent=self.screen)
+                self.show_table()
+                self.clear()
+
+            except Exception as es:
+                messagebox.showerror("error", f"error due to {str(es)} ")
+
+    def update(self):
+        if self.ent_id.get() == "":
+            messagebox.showerror("error", "please enter the student id to update student data")
+        else:
+            try:
+                stuattendance_obj = Model_staffattendance( self.ent_Name.get(),
+                                                            self.ent_lname.get(),self.ent_id.get(), self.from_date_var.get(),
+                                                            self.to_date_var.get(), self.ent_totalday.get(),
+                                                            self.ent_present.get(), self.ent_absent.get())
+                query = "update tbl_staff_attendance set From_date=%s,To_date=%s,Total_days=%s,Present_days=%s,Absent_days=%s where " \
+                        "Staff_ID_No=%s;"
+                values = (
+                    stuattendance_obj.get_From(), stuattendance_obj.get_To(), stuattendance_obj.get_Total_days(),
+                    stuattendance_obj.get_Days_present(), stuattendance_obj.get_Days_absent(),
+                    stuattendance_obj.get_ID_No())
+                self.con_staffattendance.update(query, values)
+                messagebox.showinfo("success", "Data updated successfully",parent=self.screen)
+                self.show_table()
+                self.clear()
+
+
+            except Exception as es:
+                messagebox.showerror("error", f"error due to {str(es)} ")
+
+    def search_data1(self):
+        query = "select First_Name from tbl_staff_attendance;"
+        records = self.con_staffattendance.select1(query)
+        data_list = []
+        for row in records:
+            data_list.append(row[0])
+        ans = self.linear_search(data_list, self.search_ent.get())
+
+    def linear_search(self, data, item):
+        for i in data:
+            if i == item:
+                messagebox.showinfo('Success', 'congrats Name exists in this list',parent=self.screen)
+                query1 = "select * from tbl_staff_attendance where First_Name=%s;"
+                values1 = (self.search_ent.get(),)
+                records1 = self.con_staffattendance.select(query1, values1)
+                if len(records1) != 0:
+                    self.staf_table.delete(*self.staf_table.get_children())
+                    for row in records1:
+                        self.staf_table.insert('', END, values=row)
+
+                break
+
+        else:
+            messagebox.showerror('error', 'sorry this Name doesnot exist in this list',parent=self.screen)
+
+    def sorting(self):
+        query = "select * from tbl_staff_attendance;"
+        records = self.con_staffattendance.select1(query)
+        data_list1 = []
+        for row in records:
+            data_list1.append(row)
+        d = self.bubblesort_ascending(data_list1)
+
+    def bubblesort_ascending(self, list):
+        for j in range(len(list) - 1):
+            for i in range(len(list) - 1):
+                if list[i] > list[i + 1]:
+                    list[i], list[i + 1] = list[i + 1], list[i]
+        messagebox.showinfo("success","list has been sorted in ascending order",parent=self.screen)
+        if len(list) != 0:
+            self.staf_table.delete(*self.staf_table.get_children())
+            for i in list:
+                self.staf_table.insert('', END, values=i)
+
+
+
+# window=Tk()
+# Staff_attendance(window)
+# window.mainloop()
