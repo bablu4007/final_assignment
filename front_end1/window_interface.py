@@ -1,11 +1,11 @@
 from tkinter import*
-# from front_end1.exam_management_section import*
-# from front_end1.staff_management_section import*
-# from front_end1.fees_management_section import*
-# from front_end1.Student_attendance_section import*
-# from front_end1.staff_attendance_section import*
-# from front_end1.Course_section import*
-# from front_end1.student_management_section import*
+from front_end1.exam_management_section import*
+from front_end1.staff_management_section import*
+from front_end1.fees_management_section import*
+from front_end1.Student_attendance_section import*
+from front_end1.staff_attendance_section import*
+from front_end1.Course_section import*
+from front_end1.student_management_section import*
 from tkcalendar import *
 from tkinter import ttk
 class Mainwindow:

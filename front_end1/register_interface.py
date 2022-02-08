@@ -3,7 +3,7 @@ from PIL import Image,ImageTk
 from tkinter import ttk
 from front_end1.login_interface import *
 from tkinter import messagebox
-# from model_class1.register_model import*
+from model_class1.register_model import*
 from back_end1.register_connection import*
 class Register:
     def __init__(self,screen):
