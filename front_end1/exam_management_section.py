@@ -187,3 +187,176 @@ class Exam:
         self.exam_table.pack(fill=BOTH, expand=1)
         self.show_table()
         self.exam_table.bind("<ButtonRelease-1>", self.displaydata_into_entry)
+
+    def search_data(self):
+        try:
+            query = "select ID_No,First_Name,Last_Name from tbl_student where " + str(
+                self.combo_search1.get()) + "=" + str(self.search_ent1.get())
+            row = self.con_exam.select1(query)
+            # print(row)
+            if len(row) != 0:
+                self.exam_table1.delete(*self.exam_table1.get_children())
+                for i in row:
+                    self.exam_table1.insert('', END, values=i)
+
+
+        except Exception as es:
+
+            messagebox.showerror("error",f"error due to {str(es)}")
+
+
+    def showdata_into_entry(self,ev):
+        row_cursor=self.exam_table1.focus()
+        contents=self.exam_table1.item(row_cursor)
+        row=contents['values']
+        self.ent_id.delete(0, END)
+        self.ent_id.insert(END,row[0])
+        self.ent_Name.delete(0, END)
+        self.ent_Name.insert(END,row[1])
+        self.ent_lname.delete(0, END)
+        self.ent_lname.insert(END,row[2])
+
+    def add(self):
+        if self.ent_id.get()=="" or self.ent_Name.get()=="" or self.ent_lname.get()=="" or \
+                self.ent_markobtain.get()=="" or self.ent_totalmark.get()=="" or self.ent_percentage.get()=="":
+            messagebox.showerror("Error","All fields are required")
+
+        elif self.ent_Name.get().isdigit() or self.ent_lname.get().isdigit():
+            messagebox.showerror("error", "integer value is not allowed in first name ,last name ")
+        elif self.ent_id.get().isalpha() or self.ent_markobtain.get().isalpha() or \
+                self.ent_totalmark.get().isalpha() or self.ent_percentage.get().isalpha():
+            messagebox.showerror("Error", "Alphabetical value is not allowed in student id,marks obtain,total marks and percentage")
+        else:
+            try:
+
+                exam_obj=Model_exam(self.ent_id.get(),self.ent_Name.get(),self.ent_lname.get(),
+                                    self.ent_markobtain.get(),self.ent_totalmark.get(),self.ent_percentage.get())
+                query="insert into tbl_exam values(%s,%s,%s,%s,%s,%s);"
+                values=(exam_obj.get_ID(),exam_obj.get_first_name(),exam_obj.get_last_name(),
+                        exam_obj.get_marks_obtain(),exam_obj.get_total_marks(),exam_obj.get_percentage())
+                self.con_exam.insert(query,values)
+                messagebox.showinfo("error","Data inserted in database successfully")
+                self.clear()
+
+
+            except Exception as e:
+                messagebox.showerror("error",f"error due to {str(e)}")
+
+
+    def show_table(self):
+        query_select="select * from tbl_exam;"
+        row1=self.con_exam.select1(query_select)
+        if len(row1)!=0:
+            self.exam_table.delete(*self.exam_table.get_children())
+            for i in row1:
+                self.exam_table.insert('',END,values=i)
+
+    def clear(self):
+        self.ent_id.delete(0,END)
+        self.ent_Name.delete(0, END)
+        self.ent_lname.delete(0, END)
+        self.ent_markobtain.delete(0, END)
+        self.ent_totalmark.delete(0, END)
+        self.ent_percentage.delete(0, END)
+
+    def displaydata_into_entry(self,ev):
+        row_cursor=self.exam_table.focus()
+        contents=self.exam_table.item(row_cursor)
+        row=contents['values']
+        self.ent_id.delete(0, END)
+        self.ent_id.insert(END, row[0])
+        self.ent_Name.delete(0, END)
+        self.ent_Name.insert(END, row[1])
+        self.ent_lname.delete(0, END)
+        self.ent_lname.insert(END, row[2])
+        self.ent_markobtain.delete(0, END)
+        self.ent_markobtain.insert(END,row[3])
+        self.ent_totalmark.delete(0, END)
+        self.ent_totalmark.insert(END, row[4])
+        self.ent_percentage.delete(0, END)
+        self.ent_percentage.insert(END, row[5])
+
+    def delete(self):
+        if self.ent_id.get() == "":
+            messagebox.showerror("error", "please enter id nnumber to delete")
+        else:
+
+            try:
+                query = "delete from tbl_exam where Student_ID_No=%s;"
+                exam_obj=Model_exam(self.ent_id.get(),self.ent_Name.get(),self.ent_lname.get(),
+                                    self.ent_markobtain.get(),self.ent_totalmark.get(),self.ent_percentage.get())
+                value = (exam_obj.get_ID(),)
+                self.con_exam.delete(query, value)
+                messagebox.showinfo("success", "data deleted successfully",parent=self.screen)
+                self.show_table()
+                self.clear()
+
+            except Exception as es:
+                messagebox.showerror("error", f"error due to {str(es)} ")
+
+    def update(self):
+        if self.ent_id.get() == "":
+            messagebox.showerror("error", "please enter the student id to update student data")
+        else:
+            try:
+                exam_obj=Model_exam(self.ent_id.get(),self.ent_Name.get(),self.ent_lname.get(),
+                                    self.ent_markobtain.get(),self.ent_totalmark.get(),self.ent_percentage.get())
+                query = "update tbl_exam set Marks_obtained=%s,Total_Marks=%s,Percentage=%s where Student_ID_No=%s;"
+                values = (
+                    exam_obj.get_marks_obtain(),exam_obj.get_total_marks(),exam_obj.get_percentage(),exam_obj.get_ID())
+                self.con_exam.update(query, values)
+                messagebox.showinfo("success", "Data updated successfully",parent=self.screen)
+                self.show_table()
+                self.clear()
+
+
+            except Exception as es:
+                messagebox.showerror("error", f"error due to {str(es)} ")
+    def sorting(self):
+        query = "select * from tbl_exam;"
+        records = self.con_exam.select1(query)
+        data_list1 = []
+        for row in records:
+            data_list1.append(row)
+        d = self.bubblesort_ascending(data_list1)
+
+    def bubblesort_ascending(self, list):
+        for j in range(len(list) - 1):
+            for i in range(len(list) - 1):
+                if list[i] > list[i + 1]:
+                    list[i], list[i + 1] = list[i + 1], list[i]
+        messagebox.showinfo("success","list has been sorted by student id number in ascending order.")
+        if len(list) != 0:
+            self.exam_table.delete(*self.exam_table.get_children())
+            for i in list:
+                self.exam_table.insert('', END, values=i)
+
+    def search_data1(self):
+        query = "select First_Name from tbl_exam;"
+        records = self.con_exam.select1(query)
+        data_list = []
+        for row in records:
+            data_list.append(row[0])
+        ans = self.linear_search(data_list, self.search_ent.get())
+
+    def linear_search(self, data, item):
+        for i in data:
+            if i == item:
+                messagebox.showinfo('Success', 'congrats Name exists in this list',parent=self.screen)
+                query1 ="select * from tbl_exam where First_Name=%s;"
+                values1=(self.search_ent.get(),)
+                records1 = self.con_exam.select(query1,values1)
+                if len(records1) != 0:
+                    self.exam_table.delete(*self.exam_table.get_children())
+                    for row in records1:
+                        self.exam_table.insert('', END, values=row)
+                break
+        else:
+            messagebox.showerror('error', 'sorry this Name doesnot exist in this list',prent=self.screen)
+
+
+
+
+# window=Tk()
+# Exam(window)
+# window.mainloop()
