@@ -156,6 +156,6 @@ class Login:
         new_window=Toplevel()
         Mainwindow(new_window)
 
-window=Tk()
-Login(window)
-window.mainloop()
+# window=Tk()
+# Login(window)
+# window.mainloop()
