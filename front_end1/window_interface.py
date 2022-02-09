@@ -76,7 +76,7 @@ class Mainwindow:
         # ========button7=====
         self.canvas_btn7 = Canvas(self.container_first, width=150, height=100)
         self.canvas_btn7.place(x=900, y=400)
-        self.photo7 = PhotoImage(file="C:\\Users\Bablu\pythonProject\\final_assignment_semIII\\images\\studenty (1).png")
+        self.photo7 = PhotoImage(file="C:\\Users\\Bablu\\pythonProject\\final_assignment_semIII\\images\\student.png")
         self.canvas_btn7.create_image(0, 0, image=self.photo7, anchor=NW)
         self.btn6 = Button(self.container_first, text="Student Management", font=("times new roman", 15, "bold"), bd=8,
                            relief=GROOVE, bg="light blue", cursor="hand2", command=self.student_window)

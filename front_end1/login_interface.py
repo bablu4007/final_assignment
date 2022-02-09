@@ -19,7 +19,7 @@ class Login:
         #=======image=======
         self.canvas5 = Canvas(self.wn, width=1470, height=830)
         self.canvas5.place(x=544, y=70)
-        self.photo = PhotoImage(file="C:\\final-assignment\\final_database1_assignment\\images\\mcgill-university.png")
+        self.photo = PhotoImage(file="C:\\Users\\Bablu\\pythonProject\\final_assignment_semIII\\images\\login_bg.png.")
         self.canvas5.create_image(0, 0, image=self.photo, anchor=NW)
         self.uni=Label(self.wn,text="University",font=("times new roman",30,"bold"),bg="#2C3E4C",fg="yellow")
         self.uni.place(x=900,y=20)
@@ -156,6 +156,6 @@ class Login:
         new_window=Toplevel()
         Mainwindow(new_window)
 
-# window=Tk()
-# Login(window)
-# window.mainloop()
+window=Tk()
+Login(window)
+window.mainloop()
