@@ -9,23 +9,23 @@ class Login:
         self.wn=screen
         self.wn.geometry("1470x830+60+0")
         self.wn.title("Login window".center(400))
-        self.wn.configure(background="#2C3E4C")
+        self.wn.configure(background="teal")
         self.wn.resizable(0,0)
         self.con_login=register_database()
 
         #======frame=====
-        self.frame2 = Frame(self.wn, bg="#2C3E4C")
+        self.frame2 = Frame(self.wn, bg="teal")
         self.frame2.place(x=10, y=50, width=530, height=440)
         #=======image=======
         self.canvas5 = Canvas(self.wn, width=1470, height=830)
         self.canvas5.place(x=544, y=70)
         self.photo = PhotoImage(file="C:\\Users\\Bablu\\pythonProject\\final_assignment_semIII\\images\\login_bg.png.")
         self.canvas5.create_image(0, 0, image=self.photo, anchor=NW)
-        self.uni=Label(self.wn,text="University",font=("times new roman",30,"bold"),bg="#2C3E4C",fg="yellow")
+        self.uni=Label(self.wn,text="University",font=("times new roman",30,"bold"),bg="#2C3E4C",fg="darkturquoise")
         self.uni.place(x=900,y=20)
         #=====label=====
-        self.lbl1=Label(self.frame2,text="Login Here",font=("impact",35,"bold"),bg="#2C3E4C",fg="green").place(x=40,y=10)
-        self.lbl2 =Label(self.frame2, text="Admin Login Area", font=("Goudy old style", 15, "bold"), bg="#2C3E4C", fg="green").place(
+        self.lbl1=Label(self.frame2,text="Login Here",font=("impact",35,"bold"),bg="teal",fg="skyblue").place(x=40,y=10)
+        self.lbl2 =Label(self.frame2, text="Admin Login Area", font=("Goudy old style", 15, "bold"), bg="teal", fg="skyblue").place(
             x=40, y=70)
         #=======username=====
         self.username1 = Label(self.frame2, text="Username", font=("Goudy old style", 20, "bold"), bg="#2C3E4C", fg="#d77337").place(
@@ -44,8 +44,8 @@ class Login:
         self.btn_login=Button(self.wn,text="Login",font=("times new roman",20),fg="white",bg="#d77337",bd=0,cursor="hand2",
                               command=self.login_click).place(x=220,y=320,width=150,height=40)
         #=====forget password====
-        self.btn_forget = Button(self.frame2, text="Forget Password ?", font=("Goudy old style", 20, "bold"), fg="#d77337",
-                                bg="#2C3E4C", bd=0, cursor="hand2",command=self.forget_window).place(x=190, y=350)
+        self.btn_forget = Button(self.frame2, text="Forget Password ?", font=("Goudy old style", 20, "bold"), fg="white",
+                                bg="cadetblue", bd=0, cursor="hand2",command=self.forget_window).place(x=190, y=350)
 
         #========forget window========
     def reset_password(self):
@@ -120,10 +120,8 @@ class Login:
 
     def login_click(self):
 
-
         if self.ent_username1.get()=="" or self.ent_password1.get()=="":
             messagebox.showerror("Error","please enter username and password",parent=self.wn)
-
         else:
             username=self.ent_username1.get()
             password=self.ent_password1.get()
@@ -145,11 +143,6 @@ class Login:
     #     new_window = Toplevel()
     #     Register(new_window)
     #     self.wnn.withdraw()
-
-
-
-
-
 
     def main_window(self):
 

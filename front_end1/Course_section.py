@@ -8,39 +8,39 @@ class Course:
         self.wn1=screen
         self.wn1.geometry("1480x830+50+0")
         self.wn1.title("Course management".center(450))
-        self.wn1.configure(background="crimson")
+        self.wn1.configure(background="tomato")
         #==========database connection======
         self.con_course=register_database()
         # ======third frame=========
-        self.container_4 = Frame(self.wn1, bg="green", bd=10, relief=RIDGE)
+        self.container_4 = Frame(self.wn1, bg="limegreen", bd=10, relief=RIDGE)
         self.container_4.place(x=10, y=90, width=500, height=730)
-        self.head5 = Label(self.wn1, text="COURSE", font=("times new roman", 40, "bold"), bg="crimson",
-                           fg="yellow")
+        self.head5 = Label(self.wn1, text="COURSE", font=("times new roman", 40, "bold"), bg="tomato",
+                           fg="black")
         self.head5.place(x=700, y=10)
-        self.head4 = Label(self.container_4, text=" Course Details", font=("times new roman", 20, "bold"),bg="green",
+        self.head4 = Label(self.container_4, text=" Course Details", font=("times new roman", 20, "bold"),bg="limegreen",
                            fg="white")
         self.head4.place(x=190,y=30)
         #====courseID=====
         self.course_ID = Label(self.container_4, text="Course_ID:", font=("times new roman", 20, "bold"),
-                            fg="white", bg="green").place(x=100, y=100)
+                            fg="white", bg="limegreen").place(x=100, y=100)
         self.ent_course_ID = Entry(self.container_4, font=("arial", 12, "bold"), bd=1, relief=GROOVE,
                                 bg="lightgray")
         self.ent_course_ID.place(x=100, y=150)
         #===course name=====
         self.course_name = Label(self.container_4, text="Course_Name:", font=("times new roman", 20, "bold"),
-                               fg="white", bg="green").place(x=100, y=200)
+                               fg="white", bg="limegreen").place(x=100, y=200)
 
         self.combobox2=ttk.Combobox(self.container_4,font=("arial",15,"bold"))
         self.combobox2["values"]=("BCA","Bsc(computing system)","Ethical hacking and security","MBA","BBA","BIT","BIM","CA")
         self.combobox2.place(x=100,y=250,width=300)
         #======course desciption====
         self.course_desc = Label(self.container_4, text="Course_Description:", font=("times new roman", 20, "bold"),
-                                 fg="white", bg="green").place(x=100, y=300)
+                                 fg="white", bg="limegreen").place(x=100, y=300)
 
         self.course_textbox=Text(self.container_4,font=("arial",15,"bold"),bg="lightgray")
         self.course_textbox.place(x=100,y=350,width=260,height=100)
         self.total_yr = Label(self.container_4, text="Total Year:", font=("times new roman", 20, "bold"),
-                                 fg="white", bg="green").place(x=100, y=465)
+                                 fg="white", bg="limegreen").place(x=100, y=465)
         self.ent_total_yr= Entry(self.container_4, font=("arial", 12, "bold"), bd=1, relief=GROOVE,
                                    bg="lightgray")
         self.ent_total_yr.place(x=100, y=505)
@@ -53,14 +53,14 @@ class Course:
                               fg="yellow",cursor="hand2",command=self.delete).place(x=200, y=620, width=100)
         self.btn_clear = Button(self.container_4, text="CLEAR", font=("times new roman", 17, "bold"), bg="#2C3E4C",
                                  fg="yellow",cursor="hand2",command=self.clear).place(x=320, y=620, width=100)
-        self.container_5 = Frame(self.wn1, bg="green", bd=10, relief=RIDGE)
+        self.container_5 = Frame(self.wn1, bg="limegreen", bd=10, relief=RIDGE)
         self.container_5.place(x=530, y=90, width=930, height=730)
         self.container_6 = Frame(self.container_5, bg="white", bd=4, relief=RIDGE)
         self.container_6.place(x=15, y=120, width=880, height=580)
         #==========sorting
         # =======sorting==========
         lbl_sort = Label(self.container_5, text="Sort By:", font=("times new roman", 20, "bold"), fg="yellow",
-                         bg="green")
+                         bg="limegreen")
         lbl_sort.place(x=10, y=70)
         combo_sort = ttk.Combobox(self.container_5, width=13,
                                   font=("times new roman", 13, "bold"), state="readonly")
@@ -72,7 +72,7 @@ class Course:
         sort_btn.place(x=380, y=70)
         #=====searching===
         lbl_search = Label(self.container_5, text="Search By:", font=("times new roman", 25, "bold"), fg="white",
-                           bg="green")
+                           bg="limegreen")
         lbl_search.grid(row=0, column=0, sticky="w", padx=10, pady=10)
         self.combo_search = ttk.Combobox(self.container_5, width=13,
                                     font=("times new roman", 13, "bold"), state="readonly")

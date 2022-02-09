@@ -14,16 +14,16 @@ class Attendance:
         self.from_date_var=StringVar()
         self.to_date_var=StringVar()
         # ======first frame=========
-        self.fcontainer = Frame(self.wn, bg="#FF3300", bd=10, relief=RIDGE)
+        self.fcontainer = Frame(self.wn, bg="violet", bd=10, relief=RIDGE)
         self.fcontainer.place(x=10, y=50, width=600, height=780)
         self.head2 = Label(self.fcontainer, text=" Attendance Details", font=("times new roman", 25, "bold"),
-                           bg="#FF3300", fg="black")
+                           bg="violet", fg="black")
         self.head2.pack(side=TOP)
         # =====heading=======
         self.head1 = Label(self.wn, text="STUDENT ATTENDANCE", font=("times new roman", 30, "bold"), bg="#9900CC",fg="yellow")
         self.head1.place(x=700, y=0)
         # =======second container========
-        self.scontainer = Frame(self.wn, bg="#FF3300", bd=10, relief=RIDGE)
+        self.scontainer = Frame(self.wn, bg="violet", bd=10, relief=RIDGE)
         self.scontainer.place(x=620, y=50, width=850, height=780)
         # =====third frame========
         self.tcontainer = Frame(self.scontainer, bg="light blue", bd=2, relief=GROOVE)
@@ -48,7 +48,7 @@ class Attendance:
 
         #====searching======
         lbl_search = Label(self.scontainer, text="Search By:", font=("times new roman", 25, "bold"), fg="black",
-                           bg="#FF3300")
+                           bg="violet")
         lbl_search.place(x=10, y=50)
         self.combo_search1 = ttk.Combobox(self.scontainer, width=13,
                                     font=("times new roman", 13, "bold"), state="readonly")
@@ -66,56 +66,56 @@ class Attendance:
         self.fourthcontainer.place(x=10, y=110, width=810, height=640)
         # ====student id==========
         self.id = Label(self.fcontainer, text="Student_ID_No:", font=("times new roman", 20, "bold"),
-                        fg="black", bg="#FF3300")
+                        fg="black", bg="violet")
         self.id.place(x=10, y=70)
         self.ent_id = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                             relief=GROOVE, bg="lightgray")
         self.ent_id.place(x=300, y=75)
         # ======first name======
         self.firstname = Label(self.fcontainer, text="First_Name:", font=("times new roman", 20, "bold"),
-                               fg="black", bg="#FF3300")
+                               fg="black", bg="violet")
         self.firstname.place(x=10, y=140)
         self.ent_Name = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                               relief=GROOVE, bg="lightgray")
         self.ent_Name.place(x=300, y=145)
         # ===last name======
         self.lastname = Label(self.fcontainer, text="Last_Name:", font=("times new roman", 20, "bold"),
-                              fg="black", bg="#FF3300")
+                              fg="black", bg="violet")
         self.lastname.place(x=10, y=210)
         self.ent_lname = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                                relief=GROOVE, bg="lightgray")
         self.ent_lname.place(x=300, y=215)
         # ====from=========
         self.from_date = Label(self.fcontainer, text="From:", font=("times new roman", 20, "bold"),
-                               fg="black", bg="#FF3300")
+                               fg="black", bg="violet")
         self.from_date.place(x=10, y=280)
         self.ent_fromdate = Entry(self.fcontainer,textvariable=self.from_date_var, font=("arial", 12, "bold"), bd=1,
                                relief=GROOVE, bg="lightgray")
         self.ent_fromdate.place(x=300, y=285)
         # ======to=====
         self.to = Label(self.fcontainer, text="To:", font=("times new roman", 20, "bold"),
-                               fg="black", bg="#FF3300")
+                               fg="black", bg="violet")
         self.to.place(x=10, y=350)
         self.ent_todate = Entry(self.fcontainer,textvariable=self.to_date_var, font=("arial", 12, "bold"), bd=1,
                                relief=GROOVE, bg="lightgray")
         self.ent_todate.place(x=300, y=355)
         # ====total days======
         self.total_days = Label(self.fcontainer, text="Total number of days:", font=("times new roman", 20, "bold"),
-                             fg="black", bg="#FF3300")
+                             fg="black", bg="violet")
         self.total_days.place(x=10, y=420)
         self.ent_totalday = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                                     relief=GROOVE, bg="lightgray")
         self.ent_totalday.place(x=300, y=425)
         #========days present======
         self.present = Label(self.fcontainer, text="Number of days present:", font=("times new roman", 20, "bold"),
-                             fg="black", bg="#FF3300")
+                             fg="black", bg="violet")
         self.present.place(x=10, y=490)
         self.ent_present = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                                     relief=GROOVE, bg="lightgray")
         self.ent_present.place(x=300, y=495)
         #=====absent days======
         self.absent = Label(self.fcontainer, text="Number of days absent:", font=("times new roman", 20, "bold"),
-                             fg="black", bg="#FF3300")
+                             fg="black", bg="violet")
         self.absent.place(x=10, y=560)
         self.ent_absent = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                                     relief=GROOVE, bg="lightgray")
@@ -171,7 +171,7 @@ class Attendance:
         self.view_frame.place(x=10,y=130,width=805,height=580)
         # ========searching======
         lbl_search = Label(self.screen, text="Search By:", font=("times new roman", 25, "bold"), fg="maroon",
-                           bg="light green")
+                           bg="violet")
         lbl_search.grid(row=0, column=0, sticky="w", padx=10, pady=10)
         self.combo_search = ttk.Combobox(self.screen, width=13,
                                          font=("times new roman", 13, "bold"), state="readonly")

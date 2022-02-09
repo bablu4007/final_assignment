@@ -14,17 +14,17 @@ class Fees:
         # #self.wn.focus_force()
         # self.wn.focus_set()
         # ======first frame=========
-        self.fcontainer = Frame(self.wn, bg="#996633", bd=10, relief=RIDGE)
+        self.fcontainer = Frame(self.wn, bg="salmon", bd=10, relief=RIDGE)
         self.fcontainer.place(x=10, y=10, width=600, height=820)
         self.head2 = Label(self.fcontainer, text=" Student Fees Details", font=("times new roman", 25, "bold"),
-                           bg="#996633",fg="black")
+                           bg="salmon",fg="black")
         self.head2.pack(side=TOP)
         # =====heading=======
         self.head1 = Label(self.wn, text="STUDENT  FEES", font=("times new roman", 30, "bold"), bg="#003333",
                            fg="red")
         self.head1.place(x=700, y=0)
         #=======second container========
-        self.scontainer=Frame(self.wn, bg="#996633", bd=10, relief=RIDGE)
+        self.scontainer=Frame(self.wn, bg="salmon", bd=10, relief=RIDGE)
         self.scontainer.place(x=620,y=50,width=850,height=780)
         #=====third frame========
         self.tcontainer=Frame(self.scontainer,bg="light blue",bd=2,relief=GROOVE)
@@ -36,7 +36,7 @@ class Fees:
 
         #====searching========
         lbl_search = Label(self.scontainer, text="Search By:", font=("times new roman", 25, "bold"), fg="yellow",
-                           bg="#996633")
+                           bg="salmon")
         lbl_search.place(x=10,y=50)
         self.combo_search1 = ttk.Combobox(self.scontainer, width=13,
                                     font=("times new roman", 13, "bold"), state="readonly")
@@ -54,70 +54,70 @@ class Fees:
         self.fourthcontainer.place(x=10, y=110, width=810, height=640)
         #====student id==========
         self.id = Label(self.fcontainer, text="Student_ID_No:", font=("times new roman", 20, "bold"),
-                        fg="yellow", bg="#996633")
+                        fg="yellow", bg="salmon")
         self.id.place(x=10, y=70)
         self.ent_id = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                               relief=GROOVE, bg="lightgray")
         self.ent_id.place(x=260, y=75)
         #======first name======
         self.firstname = Label(self.fcontainer, text="First_Name:", font=("times new roman", 20, "bold"),
-                        fg="yellow", bg="#996633")
+                        fg="yellow", bg="salmon")
         self.firstname.place(x=10, y=140)
         self.ent_Name = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                               relief=GROOVE, bg="lightgray")
         self.ent_Name.place(x=260, y=145)
         #===last name======
         self.lastname = Label(self.fcontainer, text="Last_Name:", font=("times new roman", 20, "bold"),
-                               fg="yellow", bg="#996633")
+                               fg="yellow", bg="salmon")
         self.lastname.place(x=10, y=210)
         self.ent_lname = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                               relief=GROOVE, bg="lightgray")
         self.ent_lname.place(x=260, y=215)
         #====total fees=========
         self.fee = Label(self.fcontainer, text="Total Fees:", font=("times new roman", 20, "bold"),
-                              fg="yellow", bg="#996633")
+                              fg="yellow", bg="salmon")
         self.fee.place(x=10, y=280)
         self.ent_fee = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                               relief=GROOVE, bg="lightgray")
         self.ent_fee.place(x=260, y=285)
         #======semester=====
         self.semester = Label(self.fcontainer, text="Semester:", font=("times new roman", 20, "bold"),
-                              fg="yellow", bg="#996633")
+                              fg="yellow", bg="salmon")
         self.semester.place(x=10, y=350)
         self.sem = ttk.Combobox(self.fcontainer, font=("times new roman", 12, "bold"))
         self.sem["values"] = ("1st", "2nd","3rd","4th","5th","6th","7th","8th")
         self.sem.place(x=260, y=355, width=190)
         #====year======
         self.year = Label(self.fcontainer, text="Year:", font=("times new roman", 20, "bold"),
-                              fg="yellow", bg="#996633")
+                              fg="yellow", bg="salmon")
         self.year.place(x=10, y=420)
         self.yr = ttk.Combobox(self.fcontainer, font=("times new roman", 12, "bold"))
         self.yr["values"] = ("1st year", "2nd year", "3rd year", "4th year")
         self.yr.place(x=260, y=425, width=190)
         #=======paid amount===
         self.paid = Label(self.fcontainer, text="Paid_Amount:", font=("times new roman", 20, "bold"),
-                          fg="yellow", bg="#996633")
+                          fg="yellow", bg="salmon")
         self.paid.place(x=10, y=490)
         self.ent_paid = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                               relief=GROOVE, bg="lightgray")
         self.ent_paid.place(x=260, y=495)
         # ========due amount====
         self.due = Label(self.fcontainer, text="Due_Amount:", font=("times new roman", 20, "bold"),
-                         fg="yellow", bg="#996633")
+                         fg="yellow", bg="salmon")
         self.due.place(x=10, y=560)
         self.ent_due = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                              relief=GROOVE, bg="lightgray")
         self.ent_due.place(x=260, y=565)
         # ====paid date========
         self.paid_date = Label(self.fcontainer, text="Paid_Date:", font=("times new roman", 20, "bold"),
-                               fg="yellow", bg="#996633")
+                               fg="yellow", bg="salmon")
         self.paid_date.place(x=10, y=630)
         self.ent_paiddate = Entry(self.fcontainer, font=("arial", 12, "bold"), bd=1,
                                   relief=GROOVE, bg="lightgray")
         self.ent_paiddate.place(x=260, y=635, width=190)
         # =======mode of payment========
         self.mode_pay = Label(self.fcontainer, text="Mode Of Payment:", font=("times new roman", 20, "bold"),
-                              fg="yellow", bg="#996633")
+                              fg="yellow", bg="salmon")
         self.mode_pay.place(x=10, y=695)
         self.modepay = ttk.Combobox(self.fcontainer, font=("times new roman", 12, "bold"))
         self.modepay["values"] = ("Cash", "Cheque")

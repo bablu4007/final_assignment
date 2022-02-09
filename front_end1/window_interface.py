@@ -13,14 +13,14 @@ class Mainwindow:
         self.wn=screen
         self.wn.geometry("1480x830+50+0")
         self.wn.title("University management system".center(460))
-        self.wn.configure(background="orange")
+        self.wn.configure(background="orchid")
         self.wn.resizable(0, 0)
         # ===========heading==========
         self.heading = Label(self.wn, text="University Management System", bd=2, relief=GROOVE,
-                        font=("times new roman", 30, "bold"), fg="yellow", bg="crimson")
+                        font=("times new roman", 30, "bold"), fg="black", bg="coral")
         self.heading.pack(side=TOP, fill=X)
         # ======first frame=========
-        self.container_first = Frame(self.wn, bg="#2C3E4C", bd=5, relief=RIDGE)
+        self.container_first = Frame(self.wn, bg="midnightblue", bd=5, relief=RIDGE)
         self.container_first.place(x=60, y=50, width=1380, height=780)
         self.canvas_btn1 = Canvas(self.container_first, width=150, height=100)
         self.canvas_btn1.place(x=400, y=30)

@@ -18,25 +18,25 @@ class Staff:
         self.container_1 = Frame(self.wn, bg="#999999", bd=10, relief=RIDGE)
         self.container_1.place(x=10, y=50, width=600, height=780)
         self.head1 = Label(self.container_1, text=" Staff Details", font=("times new roman", 25, "bold"),
-                          fg="yellow",bg="#999999")
+                          fg="gold",bg="#999999")
         self.head1.pack(side=TOP)
         #====id no==========
         self.id = Label(self.container_1, text="First_Name:", font=("times new roman", 20, "bold"),
-                           fg="yellow", bg="#999999")
+                           fg="gold", bg="#999999")
         self.id.place(x=10, y=50)
         self.ent_fname = Entry(self.container_1, font=("arial", 12, "bold"), bd=1,
                                relief=GROOVE, bg="lightgray")
         self.ent_fname.place(x=220, y=50)
         # =======first name==========
         self.fname = Label(self.container_1, text="Last_Name:", font=("times new roman", 20, "bold"),
-                           fg="yellow", bg="#999999")
+                           fg="gold", bg="#999999")
         self.fname.place(x=10, y=100)
         self.ent_lName = Entry(self.container_1, font=("arial", 12, "bold"), bd=1,
                                relief=GROOVE, bg="lightgray")
         self.ent_lName.place(x=220, y=100)
         # =======lname==========
         self.lName = Label(self.container_1, text=" Staff_ID_No:", font=("times new roman", 20, "bold"),
-                           fg="yellow", bg="#999999")
+                           fg="gold", bg="#999999")
         self.lName.place(x=5, y=150)
         self.ent_id = Entry(self.container_1, font=("arial", 12, "bold"), bd=1,
                                relief=GROOVE, bg="lightgray")
@@ -44,27 +44,27 @@ class Staff:
 
         # =======qualification==========
         self.qualification = Label(self.container_1, text="Qualification:", font=("times new roman", 20, "bold"),
-                                    fg="yellow", bg="#999999")
+                                    fg="gold", bg="#999999")
         self.qualification.place(x=10, y=350)
         self.ent_qualifi = Entry(self.container_1, font=("arial", 12, "bold"), bd=1,
                                    relief=GROOVE, bg="lightgray")
         self.ent_qualifi.place(x=220, y=350)
         # =======Email==========
         self.Email = Label(self.container_1, text="Email:", font=("times new roman", 20, "bold"),
-                               fg="yellow", bg="#999999")
+                               fg="gold", bg="#999999")
         self.Email.place(x=10, y=400)
         self.ent_email = Entry(self.container_1, font=("arial", 12, "bold"), bd=1,
                                   relief=GROOVE, bg="lightgray")
         self.ent_email.place(x=220, y=400)
         # ======Salary=========
         self.salary = Label(self.container_1, text="Salary:", font=("times new roman", 20, "bold"),
-                                 fg="yellow", bg="#999999").place(x=10, y=200)
+                                 fg="gold", bg="#999999").place(x=10, y=200)
         self.ent_salary = Entry(self.container_1, font=("arial", 12, "bold"), bd=1, relief=GROOVE,
                                 bg="lightgray")
         self.ent_salary.place(x=220, y=200)
         # ==========DOB====
         self.DOB = Label(self.container_1, text="DOB:", font=("times new roman", 20, "bold"),
-                                 fg="yellow", bg="#999999").place(x=10, y=450)
+                                 fg="gold", bg="#999999").place(x=10, y=450)
         self.ent_dob = Entry(self.container_1, font=("arial", 12, "bold"), bd=1, relief=GROOVE,
                                 bg="lightgray")
         self.ent_dob.place(x=220, y=450)
@@ -74,48 +74,48 @@ class Staff:
         for i in a:
             List.append(i[0])
         self.course1 = Label(self.container_1, text="Course_ID:", font=("times new roman", 20, "bold"),
-                            fg="yellow", bg="#999999").place(x=10, y=250)
+                            fg="gold", bg="#999999").place(x=10, y=250)
         self.combo_course = ttk.Combobox(self.container_1, font=("arial", 12, "bold"))
         self.combo_course["values"] = List
         self.combo_course.place(x=220, y=250,width=190)
         # =========gender======
         self.gender1 = Label(self.container_1, text="Gender:", font=("times new roman", 20, "bold"),
-                            fg="yellow", bg="#999999").place(x=10, y=500)
+                            fg="gold", bg="#999999").place(x=10, y=500)
         self.gen_combo=ttk.Combobox(self.container_1,font=("times new roman",15))
         self.gen_combo['values']=("Male","Female")
         self.gen_combo.place(x=220,y=500,width=190)
         # =====phone no===
         self.phone = Label(self.container_1, text="Phone_No:", font=("times new roman", 20, "bold"),
-                           fg="yellow", bg="#999999").place(x=10, y=300)
+                           fg="gold", bg="#999999").place(x=10, y=300)
         self.ent_phone = Entry(self.container_1, font=("arial", 12, "bold"), bd=1, relief=GROOVE,
                                bg="lightgray")
         self.ent_phone.place(x=220, y=300)
         # =======religion===
         self.religion = Label(self.container_1, text="Subject:", font=("times new roman", 20, "bold"), bg="#999999",
-                              fg="yellow").place(x=10, y=550)
+                              fg="gold").place(x=10, y=550)
 
         self.combox3 = ttk.Combobox(self.container_1, font=("times new roman", 15))
         self.combox3['values'] = ("c++", "forensics", "python", "usabilty", "account", "basic maths", "information system","Algorithms","DBMS")
         self.combox3.place(x=220, y=550, width=190)
         # =======address=====
         self.address = Label(self.container_1, text="Address:", font=("times new roman", 20, "bold"),
-                             fg="yellow", bg="#999999").place(x=10, y=600)
+                             fg="gold", bg="#999999").place(x=10, y=600)
         self.txt = Text(self.container_1, width=35, height=5, bg="lightgray")
         self.txt.place(x=220, y=600)
         # ==========add button====
         self.btn_add1 = Button(self.container_1, text="ADD", font=("times new roman", 17, "bold"), bg="#2C3E4C",
-                              fg="yellow",command=self.add).place(x=0, y=700, width=90)
+                              fg="gold",command=self.add).place(x=0, y=700, width=90)
         # ========update button====
         self.btn_update1 = Button(self.container_1, text="UPDATE", font=("times new roman", 17, "bold"),
                                  bg="#2C3E4C",
-                                 fg="yellow",command=self.update).place(x=120, y=700, width=130)
+                                 fg="gold",command=self.update).place(x=120, y=700, width=130)
         # =====delete=====
         self.btn_delete1 = Button(self.container_1, text="DELETE", font=("times new roman", 17, "bold"),
                                  bg="#2C3E4C",
-                                 fg="yellow",command=self.delete).place(x=280, y=700, width=130)
+                                 fg="gold",command=self.delete).place(x=280, y=700, width=130)
         # =========clear========
         self.btn_clear1 = Button(self.container_1, text="CLEAR", font=("times new roman", 17, "bold"), bg="#2C3E4C",
-                                fg="yellow",command=self.cut).place(x=440, y=700, width=90)
+                                fg="gold",command=self.cut).place(x=440, y=700, width=90)
 
         self.container_2 = Frame(self.wn, bg="#999999", bd=10, relief=RIDGE)
         self.container_2.place(x=620, y=50, width=850, height=780)
@@ -135,7 +135,7 @@ class Staff:
                           width=8,command=self.sorting)
         sort_btn.place(x=380, y=70)
         #====searching=========
-        lbl_search = Label(self.container_2, text="Search By:", font=("times new roman", 25, "bold"), fg="yellow",
+        lbl_search = Label(self.container_2, text="Search By:", font=("times new roman", 25, "bold"), fg="gold",
                            bg="#999999")
         lbl_search.grid(row=0, column=0, sticky="w", padx=10, pady=10)
         self.combo_search = ttk.Combobox(self.container_2, width=13,
