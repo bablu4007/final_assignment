@@ -20,7 +20,7 @@ class Student:
         self.head5 = Label(self.wn, text="STUDENT   DATA", font=("times new roman", 30, "bold"), bg="light green",
                            fg="maroon")
         self.head5.place(x=800, y=0)
-        self.container_1 = Frame(self.wn, bg="#3399FF", bd=0, relief=RIDGE)
+        self.container_1 = Frame(self.wn, bg="lightskyblue", bd=0, relief=RIDGE)
         self.container_1.place(x=10, y=50, width=720, height=780)
         # ====calender=====
         self.btn_caleder = Button(self.container_1, text="Get value1", font=("times new roman", 17, "bold"),
@@ -32,18 +32,18 @@ class Student:
 
         # =====heading=======
         self.head = Label(self.container_1, text="Student Details", font=("times new roman", 30, "bold"), fg="maroon",
-                          bg="#3399FF")
+                          bg="lightskyblue")
         self.head.pack(side=TOP)
         # =======ID==========
         self.ID = Label(self.container_1, text="Student_ID_No:", font=("times new roman", 20, "bold"),
-                        fg="white", bg="#3399FF")
+                        fg="white", bg="lightskyblue")
         self.ID.place(x=10, y=100)
         self.ent_ID = Entry(self.container_1, font=("arial", 12, "bold"), bd=1,
                             relief=GROOVE, bg="lightgray")
         self.ent_ID.place(x=260, y=100)
         # =======name==========
         self.Name = Label(self.container_1, text="First Name:", font=("times new roman", 20, "bold"),
-                          fg="white", bg="#3399FF")
+                          fg="white", bg="lightskyblue")
         self.Name.place(x=10, y=150)
         self.ent_Name = Entry(self.container_1, font=("arial", 12, "bold"), bd=1,
                               relief=GROOVE, bg="lightgray")
@@ -51,7 +51,7 @@ class Student:
 
         # =======Admission date==========
         self.Admission_date = Label(self.container_1, text="Admission Date:", font=("times new roman", 20, "bold"),
-                                    fg="white", bg="#3399FF")
+                                    fg="white", bg="lightskyblue")
         self.Admission_date.place(x=10, y=50)
         self.ent_admission = Entry(self.container_1, textvariable=self.admission_var, font=("arial", 12, "bold"), bd=1,
                                    relief=GROOVE,
@@ -59,27 +59,27 @@ class Student:
         self.ent_admission.place(x=260, y=60, width=184, height=25)
         # =======father name==========
         self.father_name = Label(self.container_1, text="Father's_Name:", font=("times new roman", 20, "bold"),
-                                 fg="white", bg="#3399FF")
+                                 fg="white", bg="lightskyblue")
         self.father_name.place(x=10, y=400)
         self.ent_fathername = Entry(self.container_1, font=("arial", 12, "bold"), bd=1,
                                     relief=GROOVE, bg="lightgray")
         self.ent_fathername.place(x=260, y=400)
         # ======last name=========
         self.last_name = Label(self.container_1, text="Last_Name:", font=("times new roman", 20, "bold"),
-                               fg="white", bg="#3399FF").place(x=10, y=200)
+                               fg="white", bg="lightskyblue").place(x=10, y=200)
         self.ent_lastname = Entry(self.container_1, font=("arial", 12, "bold"), bd=1, relief=GROOVE,
                                   bg="lightgray")
         self.ent_lastname.place(x=260, y=200)
         # ==========mother name====
         self.mother_name = Label(self.container_1, text="Mother's_Name:", font=("times new roman", 20, "bold"),
-                                 fg="white", bg="#3399FF").place(x=10, y=450)
+                                 fg="white", bg="lightskyblue").place(x=10, y=450)
         self.ent_mother = Entry(self.container_1, font=("arial", 12, "bold"), bd=1, relief=GROOVE,
                                 bg="lightgray")
         self.ent_mother.place(x=260, y=450)
         # ========DOB=======
 
         self.dob = Label(self.container_1, text="Date Of Birth:", font=("times new roman", 20, "bold"),
-                         fg="white", bg="#3399FF").place(x=10, y=250)
+                         fg="white", bg="lightskyblue").place(x=10, y=250)
         self.ent_dob = Entry(self.container_1, textvariable=self.dob_var, font=("arial", 12, "bold"), bd=1,
                              relief=GROOVE,
                              bg="lightgray")
@@ -87,7 +87,7 @@ class Student:
 
         # =========gender======
         self.gender = Label(self.container_1, text="Gender:", font=("times new roman", 20, "bold"),
-                            fg="white", bg="#3399FF").place(x=10, y=500)
+                            fg="white", bg="lightskyblue").place(x=10, y=500)
         self.combu = ttk.Combobox(self.container_1, font=("times new roman", 12, "bold"))
         self.combu["values"] = ("Male", "Female")
         self.combu.place(x=260, y=500, width=190)
@@ -98,30 +98,30 @@ class Student:
             List.append(i[0])
 
         self.course = Label(self.container_1, text="Course_ID:", font=("times new roman", 20, "bold"),
-                            fg="white", bg="#3399FF").place(x=10, y=300)
+                            fg="white", bg="lightskyblue").place(x=10, y=300)
         self.combo_course = ttk.Combobox(self.container_1, font=("arial", 12, "bold"))
         self.combo_course["values"] = List
         self.combo_course.place(x=260, y=300, width=190)
         # ======section====
-        self.section = Label(self.container_1, text="Section:", font=("times new roman", 20, "bold"), bg="#3399FF",
+        self.section = Label(self.container_1, text="Section:", font=("times new roman", 20, "bold"), bg="lightskyblue",
                              fg="white").place(x=10, y=550)
 
         self.combox2 = ttk.Combobox(self.container_1, font=("times new roman", 15))
-        self.combox2['values'] = ("Select", "27A", "27B", "27C", "27D", "27E", "27F")
+        self.combox2['values'] = ("Select", "30A", "30B", "31A", "31B", "32A", "32B")
         self.combox2.place(x=260, y=550, width=190)
         # =====phone no===
 
         self.phone = Label(self.container_1, text="Phone_No:", font=("times new roman", 20, "bold"),
-                           fg="white", bg="#3399FF").place(x=10, y=350)
+                           fg="white", bg="lightskyblue").place(x=10, y=350)
         self.ent_phone = Entry(self.container_1, font=("arial", 12, "bold"), bd=1, relief=GROOVE,
                                bg="lightgray")
         self.ent_phone.place(x=260, y=350)
         # =======address=====
         self.address = Label(self.container_1, text="Address:", font=("times new roman", 20, "bold"),
-                             fg="white", bg="#3399FF").place(x=10, y=600)
+                             fg="white", bg="lightskyblue").place(x=10, y=600)
         self.txt = Text(self.container_1, width=35, height=5, bg="lightgray")
         self.txt.place(x=260, y=600)
-        self.container_2 = Frame(self.wn, bg="#3399FF", bd=5, relief=RIDGE)
+        self.container_2 = Frame(self.wn, bg="lightskyblue", bd=5, relief=RIDGE)
         self.container_2.place(x=740, y=50, width=730, height=780)
         # ====frame under frame====
         self.container_3 = Frame(self.container_2, bg="white", bd=5, relief=RIDGE)
@@ -129,7 +129,7 @@ class Student:
 
         # =======sorting==========
         lbl_sort = Label(self.container_2, text="Sort By:", font=("times new roman", 20, "bold"), fg="black",
-                         bg="#3399FF")
+                         bg="lightskyblue")
         lbl_sort.place(x=10, y=70)
         self.combo_sort = ttk.Combobox(self.container_2, width=13,
                                        font=("times new roman", 13, "bold"), state="readonly")
@@ -141,7 +141,7 @@ class Student:
         sort_btn.place(x=370, y=70)
         # ========searching======
         lbl_search = Label(self.container_2, text="Search By:", font=("times new roman", 25, "bold"), fg="yellow",
-                           bg="#3399FF")
+                           bg="lightskyblue")
         lbl_search.grid(row=0, column=0, sticky="w", padx=10, pady=10)
         self.combo_search = ttk.Combobox(self.container_2, width=13,
                                          font=("times new roman", 13, "bold"), state="readonly")
