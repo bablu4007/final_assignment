@@ -31,7 +31,7 @@ class Course:
                                fg="white", bg="limegreen").place(x=100, y=200)
 
         self.combobox2=ttk.Combobox(self.container_4,font=("arial",15,"bold"))
-        self.combobox2["values"]=("BCA","Bsc(computing system)","Ethical hacking and security","MBA","BBA","BIT","BIM","CA")
+        self.combobox2["values"]=("cloud","Bsc(computing system)","Ethical hacking and security","MBA","BBA","BIT","BIM","CA")
         self.combobox2.place(x=100,y=250,width=300)
         #======course desciption====
         self.course_desc = Label(self.container_4, text="Course_Description:", font=("times new roman", 20, "bold"),
