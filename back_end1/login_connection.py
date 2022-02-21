@@ -3,7 +3,7 @@ import mysql.connector
 class login_database:
     def __init__(self):
         self.con2=mysql.connector.connect(host='localhost', user='root', password='',
-                                      database='university')
+                                      database='hash_uni')
         self.cursor2=self.con2.cursor()
 
     def select(self,query,values):

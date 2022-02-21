@@ -1,7 +1,7 @@
 import mysql.connector
 class register_database:
     def __init__(self):
-        self.con1=mysql.connector.connect(host='localhost', user='root', password='',database='university')
+        self.con1=mysql.connector.connect(host='localhost', user='root', password='',database='hash_uni')
         self.cursor1=self.con1.cursor()
 
     def insert(self,query,values):

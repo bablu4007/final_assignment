@@ -92,10 +92,6 @@ class Register:
 
 
     def register_click(self):
-        # entered_password = self.ent_password.get()
-        # enc_pass = entered_password.encode('utf-8')
-        # hashed = str(
-        #     binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
 
         if self.ent_fname.get()==""or self.ent_contactno.get()=="" or self.ent_username.get()=="" or self.ent_password.get()=="" or self.ent_confirmpass.get()=="" or self.combox.get()=="" or self.ent_answer.get()=="":
             messagebox.showerror("Error","All fields are required ")

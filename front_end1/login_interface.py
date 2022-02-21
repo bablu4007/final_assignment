@@ -49,15 +49,7 @@ class Login:
                                 bg="cadetblue", bd=0, cursor="hand2").place(x=190, y=350)
 
     def login_click(self):
-        #
-        # enc_pass = self.ent_password1.get().encode('utf-8')
-        # hashed = str(binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
-        # print(hashed)
-        # if self.ent_username1.get()=="" or self.ent_password1.get()=="":
-        #     messagebox.showerror("Error","please enter username and password",parent=self.wn)
-        # else:
-        #     username=self.ent_username1.get()
-        #     password=hashed
+
             username = self.ent_username1.get()
             password=self.ent_password1.get()
             query='select * from tbl_register where Username=%s and Password=%s'
