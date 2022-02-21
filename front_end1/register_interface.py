@@ -92,10 +92,10 @@ class Register:
 
 
     def register_click(self):
-        entered_password = self.ent_password.get()
-        enc_pass = entered_password.encode('utf-8')
-        hashed = str(
-            binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
+        # entered_password = self.ent_password.get()
+        # enc_pass = entered_password.encode('utf-8')
+        # hashed = str(
+        #     binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
 
         if self.ent_fname.get()==""or self.ent_contactno.get()=="" or self.ent_username.get()=="" or self.ent_password.get()=="" or self.ent_confirmpass.get()=="" or self.combox.get()=="" or self.ent_answer.get()=="":
             messagebox.showerror("Error","All fields are required ")
@@ -112,7 +112,7 @@ class Register:
         else:
             try:
                 Registry_obj=Model_register(self.ent_fname.get(),self.ent_lname.get(),self.ent_contactno.get(),self.ent_username.get()
-                                            ,hashed,self.combox.get(),self.ent_answer.get())
+                                            ,self.ent_password.get(),self.combox.get(),self.ent_answer.get())
                 query="insert into tbl_register values(%s,%s,%s,%s,%s,%s,%s);"
                 values=(Registry_obj.get_firstname(),Registry_obj.get_lastname(),Registry_obj.get_contact(),Registry_obj.get_username()
                         ,Registry_obj.get_password(),Registry_obj.get_securityques(),Registry_obj.get_answer())

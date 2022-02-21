@@ -3,7 +3,7 @@ from front_end1.window_interface import*
 from tkinter import ttk
 from tkinter import messagebox
 from back_end1.register_connection import*
-import binascii, hashlib
+# import binascii, hashlib
 # from front_end1.register_interface import Register
 class Login:
     def __init__(self,screen):
@@ -46,89 +46,20 @@ class Login:
                               command=self.login_click).place(x=220,y=320,width=150,height=40)
         #=====forget password====
         self.btn_forget = Button(self.frame2, text="Forget Password ?", font=("Goudy old style", 20, "bold"), fg="white",
-                                bg="cadetblue", bd=0, cursor="hand2",command=self.forget_window).place(x=190, y=350)
-
-        #========forget window========
-    def reset_password(self):
-        if self.combox1.get()=="" or self.ent_answer1.get()=="" or self.ent_newpass.get()=="":
-            messagebox.showerror("error","All fields are required ",parent=self.root)
-        else:
-            try:
-                query5="select * from tbl_register where Username=%s and Security_question=%s and Answer=%s;"
-                value=self.ent_username1.get(),self.combox1.get(),self.ent_answer1.get()
-                row=self.con_login.select(query5,value)
-
-                if row==None:
-                    messagebox.showerror("error","please enter the correct security question and qnswer",parent=self.root)
-                else:
-                    query6="update tbl_register set Password=%s where Username=%s;"
-                    value=self.ent_newpass.get(),self.ent_username1.get()
-                    self.con_login.update(query6,value)
-                    messagebox.showinfo("success","your password has been changed",parent=self.root)
-                    self.root.withdraw()
-            except Exception as es:
-                messagebox.showerror("error",f"error due to {str(es)}")
-
-    def forget_window(self):
-        if self.ent_username1.get()=="":
-            messagebox.showerror("Error","please enter the username to reset your password")
-
-        else:
-            username=self.ent_username1.get()
-            query3="select * from tbl_register where Username=%s;"
-            value=(username,)
-            row=self.con_login.select(query3,value)
-            if row==None:
-                messagebox.showerror("Error", "please enter the valid username to reset your password")
-            else:
-                self.root=Toplevel()
-                self.root.title("Password Reset window".center(70))
-                self.root.geometry("400x400+100+400")
-                self.root.focus_force()
-                self.root.configure(background="teal")
-
-                # ========security question======
-                self.security1 = Label(self.root, text="Security Question", font=("times new roman", 18, "bold"), bg="teal",
-                                      fg="black").place(x=110, y=30)
-
-                self.combox1 = ttk.Combobox(self.root, font=("times new roman", 15))
-                self.combox1['values'] = ("Select", "Your Favourite pet name", "Your birth place", "Your best friend name")
-                self.combox1.place(x=110, y=70, width=170)
-
-                # ==========Answer=======
-                self.answer1 = Label(self.root, text="Answer", font=("times new roman", 18, "bold"),bg="teal",
-                                    fg="black").place(x=140, y=175)
-                self.ent_answer1 = Entry(self.root, font=("times new roman", 15), bg="lightgray")
-
-                self.ent_answer1.place(x=110, y=205, width=170)
-                # ==========new password=======
-                self.newpass = Label(self.root, text="New Password", font=("times new roman", 18, "bold"), bg="teal",
-                                     fg="black").place(x=120, y=250)
-                self.ent_newpass = Entry(self.root, font=("times new roman", 15), bg="lightgray",show="*")
-                self.ent_newpass.place(x=110, y=280,width=170)
-                #========button of reset password==
-                self.btn_resetpassword = Button(self.root, text="Reset Password", font=("times new roman", 20), fg="white", bg="#d77337",
-                                        bd=5,cursor="hand2",command=self.reset_password).place(x=110, y=330, width=180, height=40)
-
-                self.lbl_already = Label(self.frame1, text="Already have an account ?",
-                                         font=("Goudy old style", 20, "bold"),
-                                         bg="#7851A9", fg="pink").place(x=180, y=700)
-                self.btn_login = Button(self.frame1, text="Login Here", font=("Goudy old style", 20, "bold"), fg="navy",
-                                        bg="#7851A9", bd=0, command=self.login_click, cursor="hand2").place(x=470,
-                                                                                                            y=697)
-
-
+                                bg="cadetblue", bd=0, cursor="hand2").place(x=190, y=350)
 
     def login_click(self):
-
-        enc_pass = self.ent_password1.get().encode('utf-8')
-        hashed = str(binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
-        print(hashed)
-        if self.ent_username1.get()=="" or self.ent_password1.get()=="":
-            messagebox.showerror("Error","please enter username and password",parent=self.wn)
-        else:
-            username=self.ent_username1.get()
-            password=hashed
+        #
+        # enc_pass = self.ent_password1.get().encode('utf-8')
+        # hashed = str(binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
+        # print(hashed)
+        # if self.ent_username1.get()=="" or self.ent_password1.get()=="":
+        #     messagebox.showerror("Error","please enter username and password",parent=self.wn)
+        # else:
+        #     username=self.ent_username1.get()
+        #     password=hashed
+            username = self.ent_username1.get()
+            password=self.ent_password1.get()
             query='select * from tbl_register where Username=%s and Password=%s'
             values=(username,password)
             row=self.con_login.select(query,values)
