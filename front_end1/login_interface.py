@@ -121,14 +121,14 @@ class Login:
 
     def login_click(self):
 
-        # enc_pass = self.ent_password1.get().encode('utf-8')
-        # hashed = str(binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
-        # print(hashed)
-        # if self.ent_username1.get()=="" or self.ent_password1.get()=="":
-        #     messagebox.showerror("Error","please enter username and password",parent=self.wn)
-        # else:
-        #     username=self.ent_username1.get()
-        #     password=hashed
+        enc_pass = self.ent_password1.get().encode('utf-8')
+        hashed = str(binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
+        print(hashed)
+        if self.ent_username1.get()=="" or self.ent_password1.get()=="":
+            messagebox.showerror("Error","please enter username and password",parent=self.wn)
+        else:
+            username=self.ent_username1.get()
+            password=hashed
             query='select * from tbl_register where Username=%s and Password=%s'
             values=(username,password)
             row=self.con_login.select(query,values)
@@ -142,9 +142,9 @@ class Login:
                 self.wn.withdraw()
                 self.main_window()
 
-        print(row)
-        print(username)
-        print(password)
+        # print(row)
+        # print(username)
+        # print(password)
     # def register_click(self):
     #     new_window = Toplevel()
     #     Register(new_window)

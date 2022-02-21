@@ -61,7 +61,8 @@ class Register:
                                  fg="darkolivegreen").place(x=50, y=400)
 
         self.combox=ttk.Combobox(self.frame1,font=("times new roman",15))
-        self.combox['values']=("Select","Your Favourite pet name","Your birth place","Your best friend name")
+        self.combox['values']=("Select","Your Favourite pet name","Your birth place","Your best friend name","Your Favorite movie", "Your Favorite "
+                                                                                                                                    "football team")
         self.combox.place(x=50,y=435,width=250)
 
 
@@ -91,10 +92,10 @@ class Register:
 
 
     def register_click(self):
-        # entered_password = self.ent_password.get()
-        # enc_pass = entered_password.encode('utf-8')
-        # hashed = str(
-        #     binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
+        entered_password = self.ent_password.get()
+        enc_pass = entered_password.encode('utf-8')
+        hashed = str(
+            binascii.hexlify(hashlib.pbkdf2_hmac('sha512', enc_pass, b'@ComplexSalt987', 500000))[2:-1])
 
         if self.ent_fname.get()==""or self.ent_contactno.get()=="" or self.ent_username.get()=="" or self.ent_password.get()=="" or self.ent_confirmpass.get()=="" or self.combox.get()=="" or self.ent_answer.get()=="":
             messagebox.showerror("Error","All fields are required ")
